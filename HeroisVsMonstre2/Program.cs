@@ -21,6 +21,7 @@ namespace RaulProjecteHeroisV2
             Console.WriteLine(MsgWelcome);
             while (Metodes.MainMenu())
             {
+                tries = 0;
                 Console.WriteLine(MsgDifficulty);
                 for(int i = 0; i < 4; i++)
                 {
@@ -30,7 +31,7 @@ namespace RaulProjecteHeroisV2
                 {
                     difficulty = Convert.ToInt32(Console.ReadLine());
                     tries++;
-                } while (Metodes.InRange(difficulty, MaxDiff, MinDiff)&& tries<maxtries);
+                } while (Metodes.InRange(difficulty, MinDiff, MaxDiff)&& tries<maxtries);
             }
         }
         
