@@ -74,6 +74,8 @@ namespace RaulProjecteHeroisV2
             const int play = 1, exit = 0;
             int option;
 
+            Random rand = new Random();
+            
             Console.WriteLine(MsgWelcome);
             do
             {
@@ -407,10 +409,47 @@ namespace RaulProjecteHeroisV2
                             druidDmg = Metodes.RandomStats(DruidMinDmg, DruidMaxDmg);
                             druidProtect = Metodes.RandomStats(DruidMinProtect, DruidMaxProtect);
 
-                            monsterHealth = Metodes.RandomStats(MonsterMaxHealth, MonsterMaxHealth);
-                            monsterDmg = Metodes.RandomStats(MonsterMaxDmg, MonsterMaxDmg);
-                            monsterProtect = Metodes.RandomStats(MonsterMaxProtect, MonsterMaxProtect);
+                            monsterHealth = Metodes.RandomStats(MonsterMinHealth, MonsterMaxHealth);
+                            monsterDmg = Metodes.RandomStats(MonsterMinDmg, MonsterMaxDmg);
+                            monsterProtect = Metodes.RandomStats(MonsterMinProtect, MonsterMaxProtect);
                             break;
+
+                    }
+                    while ((archerHealth > 0 || barbarianHealth > 0 || wizardHealth > 0 || druidHealth > 0) && monsterHealth > 0)
+                    {
+                        int[] turns = new int[4];
+                        for (int i = 0; i < turns.Length; i++)
+                        {
+                            int value;
+                            do
+                            {
+                                value = rand.Next(MinDiff, MaxDiff + 1);
+                            } while (turns.Contains(value));
+                            turns[i] = value;
+                        }
+                        for (int i = 0; i < turns.Length; i++)
+                        {
+                            switch (turns[i])
+                            {
+                                case 1:
+                                    Console.WriteLine(MsgTurnArcher);
+
+                                    break;
+                                case 2:
+                                    Console.WriteLine(MsgTurnBarbarian);
+                                    break;
+                                case 3:
+                                    Console.WriteLine(MsgTurnWizard);
+                                    break;
+                                case 4:
+                                    Console.WriteLine(MsgTurnDruid);
+                                    break;
+                            }
+
+                            
+                        }
+                        
+
                     }
                     enter = false;
 
