@@ -39,5 +39,11 @@ namespace LlibreriaHeroisVsMonstre
             }
             return num;
         }
+
+        public static double Damage(int dmg, ref int prot)
+        {
+            const int hundred= 100;
+            return dmg * prot/hundred;
+        }
     }
 }
