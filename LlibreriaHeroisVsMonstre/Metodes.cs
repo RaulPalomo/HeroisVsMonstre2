@@ -1,34 +1,11 @@
-﻿namespace LlibreriaHeroisVsMonstre
+﻿using System.Runtime.InteropServices;
+
+namespace LlibreriaHeroisVsMonstre
 {
     public class Metodes
     {
-       public static bool MainMenu()
-       {
-            const string MsgEntry = "1. Iniciar una nova batalla\t0. Sortir";
-            const int play = 1, exit = 0;
-            int option, tries = 0, maxTries = 3;
 
-            Console.WriteLine(MsgEntry);
-            do
-            {
-                option=Convert.ToInt32(Console.ReadLine());
-                tries++;
-            }while (option != play && option !=exit && tries<maxTries);
-            if (tries >= maxTries)
-            {
-                return false;
-            }
-            else if (option == 0)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-       }
-
-        public static bool InRange(int num,int min, int max)
+        public static bool InRange(double num,int min, int max)
         {
             if (num < min || num > max)
             {
@@ -39,6 +16,28 @@
             {
                 return false;
             }
+        }
+        public static double RandomStats(int min,int max)
+        {
+            Random rand= new Random();
+            return rand.Next(min, max + 1);
+        }
+
+        public static double CustomStats(int num,int min, int max)
+        {
+            int tries=0;
+            const int maxTries = 3;
+            do
+            {
+                num = Convert.ToInt32(Console.ReadLine());
+                tries++;
+            } while (InRange(num,min,max)&&tries<maxTries);
+            if(num>max||num<min)
+            {
+                num = min;
+                Console.WriteLine($"Com has superat els 3 intents el valor serà {num}");
+            }
+            return num;
         }
     }
 }
