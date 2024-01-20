@@ -11,7 +11,7 @@ namespace RaulProjecteHeroisV2
             //global
             const string MsgWelcome = "Benvingut a HEROIS VS MONSTRE!!!";
             int tries = 0, maxtries = 3;
-            bool archerCreated = false, archerShield;
+            bool archerCreated = false, archerShield=false;
             double archerDmg = 0, archerProtect = 0, archerHPlimit = 0;
             int archerAction, archerCD = 0;
             double archerHealth = 0;
@@ -23,7 +23,7 @@ namespace RaulProjecteHeroisV2
             const string MsgActivaArcher = "* L'arquera noqueja al monstre *";
 
             /*Variables i constants del bàrbar*/
-            bool barbarianCreated = false, barbarianShield;
+            bool barbarianCreated = false, barbarianShield=false;
             double barbarianDmg = 0, barbarianProtect = 0, barbarianHPlimit = 0;
             int barbarianAction, barbarianCD = 0;
             double barbarianHealth = 0;
@@ -34,7 +34,7 @@ namespace RaulProjecteHeroisV2
             const string MsgActivaBarbarian = "* El bàrbar millora al màxim la seva armadura *";
 
             /*Variables i constants de la maga*/
-            bool wizardCreated = false, wizardShield;
+            bool wizardCreated = false, wizardShield = false;
             double wizardDmg = 0, wizardProtect = 0, wizardHPlimit = 0;
             int wizardAction, wizardCD = 0;
             double wizardHealth = 0;
@@ -44,7 +44,7 @@ namespace RaulProjecteHeroisV2
             const string MsgTurnWizard = "-----Torn de la maga-----";
 
             /*Variables i constants del druida*/
-            bool druidCreated = false, druidShield;
+            bool druidCreated = false, druidShield = false;
             double druidDmg = 0, druidProtect = 0, druidHPlimit = 0;
             int druidAction, druidCD = 0;
             double druidHealth = 0;
@@ -67,12 +67,32 @@ namespace RaulProjecteHeroisV2
             int difficulty=0;
             const int MaxDiff = 4, MinDiff = 1;
 
+            const string MsgAction1 = "1- Atacar", MsgAction2 = "2- Protegir-se", MsgAction3 = "3- Habilitat Especial";
+            const string MsgMonsterAttack = "-----El monstre ataca-----";
+            const string MsgMonsterNoAttack = "-----El monstre no pot atacar-----";
+
+
+            const string MsgWon = "Els herois han derrotat al monstre, has guanyat!!!";
+            const string MsgLose = "Tots els herois han mort, has perdut :(";
+
+            const string MsgCoolDown = "Has d'esperar per utilitzar la habilitat";
+
+            const string MsgArcherProtect = "L'arquera duplica la seva protecció";
+            const string MsgBarbarianProtect = "El bàrbar duplica la seva protecció";
+            const string MsgWizardProtect = "La maga duplica la seva protecció";
+            const string MsgDruidProtect = "El druida duplica la seva protecció";
+
+            const string MsgArcherDie = "L'arquera ha mort";
+            const string MsgBarbarianDie = "El bàrbar ha mort";
+            const string MsgWizardDie = "La maga ha mort";
+            const string MsgDruidDie = "El druida ha mort";
 
             bool enter = false;
             const string MsgEntry = "1. Iniciar una nova batalla\t0. Sortir";
             const string MsgBye = "T'has equivocat masses cops, adéu";
-            const int play = 1, exit = 0;
-            int option;
+            const int play = 1, exit = 0, maxAction=3, minAction=1;
+            
+            int option=0;
 
             Random rand = new Random();
             
@@ -92,13 +112,13 @@ namespace RaulProjecteHeroisV2
                     {
                         enter = false;
                     }
-                    else if (option == 0)
-                    {
-                        enter = false;
-                    }
-                    else
+                    else if (option == 1)
                     {
                         enter = true;
+                    }
+                    else if( option==0)
+                    {
+                        enter = false;
                     }
                 }
                 while (enter)
@@ -177,12 +197,7 @@ namespace RaulProjecteHeroisV2
                                 archerHealth = Convert.ToInt32(Console.ReadLine());
                                 tries++;
                             } while (Metodes.InRange(archerHealth, ArcherMinHealth, ArcherMaxHealth) && tries < maxtries);
-                            if (tries >= maxtries)
-                            {
-                                
-                                archerHealth = ArcherMinHealth;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {archerHealth}");
-                            }
+                            archerHealth = Metodes.CheeckStat(archerHealth, ArcherMinHealth, ArcherMaxHealth);
                             tries = 0;
                             archerHPlimit = archerHealth;
                             Console.WriteLine(MsgDmgArcher);
@@ -192,12 +207,7 @@ namespace RaulProjecteHeroisV2
                                 tries++;
                             } while (Metodes.InRange(archerDmg, ArcherMinDmg, ArcherMaxDmg) && tries < maxtries);
 
-                            if (tries >= maxtries)
-                            {
-                                
-                                archerDmg = ArcherMinDmg;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà  {archerDmg}");
-                            }
+                            archerDmg = Metodes.CheeckStat(archerDmg, ArcherMinDmg, ArcherMaxDmg);
                             tries = 0;
                             Console.WriteLine(MsgProtectArcher);
                             do
@@ -206,14 +216,8 @@ namespace RaulProjecteHeroisV2
                                 tries++;
                             } while (Metodes.InRange(archerProtect, ArcherMinProtect, ArcherMaxProtect) && tries < maxtries);
 
-                            if (tries >= maxtries)
-                            {
-                               
-                                archerProtect = ArcherMinProtect;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà  {archerProtect}");
-                            }
+                            archerProtect = Metodes.CheeckStat(archerProtect, ArcherMinProtect, ArcherMaxProtect);
                             tries = 0;
-
                             Console.WriteLine(MsgBarbarian); //creació bàrbar
                             Console.WriteLine(MsgHealthBarbarian);
                             do
@@ -221,12 +225,7 @@ namespace RaulProjecteHeroisV2
                                 barbarianHealth = Convert.ToInt32(Console.ReadLine());
                                 tries++;
                             } while (Metodes.InRange(barbarianHealth, BarbarianMinHealth, BarbarianMaxHealth) && tries < maxtries);
-                            if (tries >= maxtries)
-                            {
-                               
-                                barbarianHealth = BarbarianMinHealth;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {barbarianHealth}");
-                            }
+                            barbarianHealth = Metodes.CheeckStat(barbarianHealth, BarbarianMinHealth, BarbarianMaxHealth);
                             tries = 0;
                             barbarianHPlimit = barbarianHealth;
                             Console.WriteLine(MsgDmgBarbarian);
@@ -236,12 +235,7 @@ namespace RaulProjecteHeroisV2
                                 tries++;
                             } while (Metodes.InRange(barbarianDmg, BarbarianMinDmg, BarbarianMaxDmg) && tries < maxtries);
 
-                            if (tries >= maxtries)
-                            {
-                                
-                                barbarianDmg = BarbarianMinDmg;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {barbarianDmg}");
-                            }
+                            barbarianDmg = Metodes.CheeckStat(barbarianDmg, BarbarianMinDmg, BarbarianMaxDmg);
                             tries = 0;
                             Console.WriteLine(MsgProtectBarbarian);
                             do
@@ -250,26 +244,16 @@ namespace RaulProjecteHeroisV2
                                 tries++;
                             } while (Metodes.InRange(barbarianProtect, BarbarianMinProtect, BarbarianMaxProtect) && tries < maxtries);
 
-                            if (tries >= maxtries)
-                            {
-                                
-                                barbarianProtect = BarbarianMinProtect;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {barbarianProtect}");
-                            }
-                            tries=0;
-                            Console.WriteLine(MsgWizard); //creació mag
+                            barbarianProtect = Metodes.CheeckStat(barbarianProtect, BarbarianMinProtect, BarbarianMaxProtect);
+                            tries = 0;
+                            Console.WriteLine(MsgWizard); //creación mago
                             Console.WriteLine(MsgHealthWizard);
                             do
                             {
                                 wizardHealth = Convert.ToInt32(Console.ReadLine());
                                 tries++;
                             } while (Metodes.InRange(wizardHealth, WizardMinHealth, WizardMaxHealth) && tries < maxtries);
-                            if (tries >= maxtries)
-                            {
-                                
-                                wizardHealth = WizardMinHealth;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {wizardHealth}");
-                            }
+                            wizardHealth = Metodes.CheeckStat(wizardHealth, WizardMinHealth, WizardMaxHealth);
                             tries = 0;
                             wizardHPlimit = wizardHealth;
                             Console.WriteLine(MsgDmgWizard);
@@ -279,12 +263,7 @@ namespace RaulProjecteHeroisV2
                                 tries++;
                             } while (Metodes.InRange(wizardDmg, WizardMinDmg, WizardMaxDmg) && tries < maxtries);
 
-                            if (tries >= maxtries)
-                            {
-                                
-                                wizardDmg = WizardMinDmg;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {wizardDmg}");
-                            }
+                            wizardDmg = Metodes.CheeckStat(wizardDmg, WizardMinDmg, WizardMaxDmg);
                             tries = 0;
                             Console.WriteLine(MsgProtectWizard);
                             do
@@ -293,26 +272,16 @@ namespace RaulProjecteHeroisV2
                                 tries++;
                             } while (Metodes.InRange(wizardProtect, WizardMinProtect, WizardMaxProtect) && tries < maxtries);
 
-                            if (tries >= maxtries)
-                            {
-                                
-                                wizardProtect = WizardMinProtect;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {wizardProtect}");
-                            }
+                            wizardProtect = Metodes.CheeckStat(wizardProtect, WizardMinProtect, WizardMaxProtect);
                             tries = 0;
-                            Console.WriteLine(MsgDruid); //creació druida
+                            Console.WriteLine(MsgDruid); //creación druida
                             Console.WriteLine(MsgHealthDruid);
                             do
                             {
                                 druidHealth = Convert.ToInt32(Console.ReadLine());
                                 tries++;
                             } while (Metodes.InRange(druidHealth, DruidMinHealth, DruidMaxHealth) && tries < maxtries);
-                            if (tries >= maxtries)
-                            {
-                                
-                                druidHealth = DruidMinHealth;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {druidHealth}");
-                            }
+                            druidHealth = Metodes.CheeckStat(druidHealth, DruidMinHealth, DruidMaxHealth);
                             tries = 0;
                             druidHPlimit = druidHealth;
                             Console.WriteLine(MsgDmgDruid);
@@ -322,12 +291,7 @@ namespace RaulProjecteHeroisV2
                                 tries++;
                             } while (Metodes.InRange(druidDmg, DruidMinDmg, DruidMaxDmg) && tries < maxtries);
 
-                            if (tries >= maxtries)
-                            {
-                                
-                                druidDmg = DruidMinDmg;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {druidDmg}");
-                            }
+                            druidDmg = Metodes.CheeckStat(druidDmg, DruidMinDmg, DruidMaxDmg);
                             tries = 0;
                             Console.WriteLine(MsgProtectDruid);
                             do
@@ -336,27 +300,18 @@ namespace RaulProjecteHeroisV2
                                 tries++;
                             } while (Metodes.InRange(druidProtect, DruidMinProtect, DruidMaxProtect) && tries < maxtries);
 
-                            if (tries >= maxtries)
-                            {
-                                
-                                druidProtect = DruidMinProtect;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {druidProtect}");
-                            }
+                            druidProtect = Metodes.CheeckStat(druidProtect, DruidMinProtect, DruidMaxProtect);
                             tries = 0;
 
-                            Console.WriteLine(MsgMonster); // Creació monstre
+
+                            Console.WriteLine(MsgMonster); // Creación monstruo
                             Console.WriteLine(MsgHealthMonster);
                             do
                             {
                                 monsterHealth = Convert.ToInt32(Console.ReadLine());
                                 tries++;
                             } while (Metodes.InRange(monsterHealth, MonsterMinHealth, MonsterMaxHealth) && tries < maxtries);
-                            if (tries >= maxtries)
-                            {
-
-                                monsterHealth = MonsterMaxHealth;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {monsterHealth}");
-                            }
+                            monsterHealth = Metodes.CheeckStat(monsterHealth, MonsterMinHealth, MonsterMaxHealth);
                             tries = 0;
                             
                             Console.WriteLine(MsgDmgMonster);
@@ -366,12 +321,7 @@ namespace RaulProjecteHeroisV2
                                 tries++;
                             } while (Metodes.InRange(monsterDmg, MonsterMinDmg, MonsterMaxDmg) && tries < maxtries);
 
-                            if (tries >= maxtries)
-                            {
-
-                                monsterDmg = MonsterMaxDmg;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {monsterDmg}");
-                            }
+                            monsterDmg=Metodes.CheeckStat(monsterDmg, MonsterMinDmg, MonsterMaxDmg);
                             tries = 0;
                             Console.WriteLine(MsgProtectMonster);
                             do
@@ -380,12 +330,7 @@ namespace RaulProjecteHeroisV2
                                 tries++;
                             } while (Metodes.InRange(monsterProtect, MonsterMinProtect, MonsterMaxProtect) && tries < maxtries);
 
-                            if (tries >= maxtries)
-                            {
-
-                                monsterProtect = MonsterMaxProtect;
-                                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {monsterProtect}");
-                            }
+                            monsterProtect=Metodes.CheeckStat(monsterProtect, MonsterMinProtect, MonsterMaxProtect);
                             tries = 0;
                             break;
                         case 4:
@@ -417,6 +362,7 @@ namespace RaulProjecteHeroisV2
                     }
                     while ((archerHealth > 0 || barbarianHealth > 0 || wizardHealth > 0 || druidHealth > 0) && monsterHealth > 0)
                     {
+                        
                         int[] turns = new int[4];
                         for (int i = 0; i < turns.Length; i++)
                         {
@@ -429,33 +375,234 @@ namespace RaulProjecteHeroisV2
                         }
                         for (int i = 0; i < turns.Length; i++)
                         {
+                            tries = 0;
                             switch (turns[i])
                             {
                                 case 1:
                                     Console.WriteLine(MsgTurnArcher);
-
+                                    Console.WriteLine(MsgAction1);
+                                    Console.WriteLine(MsgAction2);
+                                    Console.WriteLine(MsgAction3);
+                                    archerShield = false;
+                                    archerCD=Metodes.CoolDown(archerCD);
+                                    do
+                                    {
+                                        tries++;
+                                        option = Convert.ToInt32(Console.ReadLine());
+                                        if (option == 3 && !(archerCD == 0))
+                                        {
+                                            option = 0;
+                                            Console.WriteLine($"Queden {archerCD} torns per poder utilitzar la habilitat");
+                                        }
+                                    } while (Metodes.InRange(option,minAction,maxAction)&& tries<maxtries);
+                                    if (tries == maxtries)
+                                    {
+                                        option = 0;
+                                    }
+                                    switch (option)
+                                    {
+                                        case 0:
+                                            Console.WriteLine($"L'arquera perd el seu torn");
+                                            break;
+                                        case 1:
+                                            if (Metodes.Dodge())
+                                            {
+                                                Console.WriteLine($"L'arquera ha fallat l'atac");
+                                            }
+                                            else
+                                            {
+                                                if (Metodes.CriticDmg())
+                                                {
+                                                    monsterHealth -= Metodes.Damage(archerDmg*2, monsterProtect);
+                                                }
+                                                else
+                                                {
+                                                    monsterHealth -= Metodes.Damage(archerDmg, monsterProtect);
+                                                }
+                                            }
+                                            break;
+                                        case 2:
+                                            archerShield=true;
+                                            break;
+                                        case 3:
+                                            archerCD = 5;
+                                            break;
+                                    }
+                                    
                                     break;
                                 case 2:
                                     Console.WriteLine(MsgTurnBarbarian);
+                                    Console.WriteLine(MsgAction1);
+                                    Console.WriteLine(MsgAction2);
+                                    Console.WriteLine(MsgAction3);
+                                    barbarianShield = false;
+                                    barbarianCD = Metodes.CoolDown(barbarianCD);
+                                    do
+                                    {
+                                        tries++;
+                                        option = Convert.ToInt32(Console.ReadLine());
+                                        if (option == 3 && !(barbarianCD == 0))
+                                        {
+                                            option = 0;
+                                            Console.WriteLine($"Queden {barbarianCD} torns per poder utilitzar la habilitat");
+                                        }
+                                    } while (Metodes.InRange(option, minAction, maxAction) && tries < maxtries);
+                                    if (tries == maxtries)
+                                    {
+                                        option = 0;
+                                    }
+                                    switch (option)
+                                    {
+                                        case 0:
+                                            Console.WriteLine($"El bàrbar perd el seu torn");
+                                            break;
+                                        case 1:
+                                            monsterHealth -= Metodes.Damage(barbarianDmg, monsterProtect);
+                                            break;
+                                        case 2:
+                                            barbarianShield = true;
+                                            break;
+                                        case 3:
+                                            barbarianCD = 5;
+                                            break;
+                                    }
                                     break;
                                 case 3:
                                     Console.WriteLine(MsgTurnWizard);
+                                    Console.WriteLine(MsgAction1);
+                                    Console.WriteLine(MsgAction2);
+                                    Console.WriteLine(MsgAction3);
+                                    wizardShield = false;
+                                    wizardCD = Metodes.CoolDown(wizardCD);
+                                    do
+                                    {
+                                        tries++;
+                                        option = Convert.ToInt32(Console.ReadLine());
+                                        if (option == 3 && !(wizardCD == 0))
+                                        {
+                                            option = 0;
+                                            Console.WriteLine($"Queden {wizardCD} torns per poder utilitzar la habilitat");
+                                        }
+                                    } while (Metodes.InRange(option, minAction, maxAction) && tries < maxtries);
+                                    if (tries == maxtries)
+                                    {
+                                        option = 0;
+                                    }
+                                    switch (option)
+                                    {
+                                        case 0:
+                                            Console.WriteLine($"El mag perd el seu torn");
+                                            break;
+                                        case 1:
+                                            monsterHealth -= Metodes.Damage(wizardDmg, monsterProtect);
+                                            break;
+                                        case 2:
+                                            wizardShield = true;
+                                            break;
+                                        case 3:
+                                            wizardCD = 5;
+                                            break;
+                                    }
                                     break;
                                 case 4:
                                     Console.WriteLine(MsgTurnDruid);
+                                    Console.WriteLine(MsgAction1);
+                                    Console.WriteLine(MsgAction2);
+                                    Console.WriteLine(MsgAction3);
+                                    druidShield = false;
+                                    druidCD = Metodes.CoolDown(druidCD);
+                                    do
+                                    {
+                                        tries++;
+                                        option = Convert.ToInt32(Console.ReadLine());
+                                        if (option == 3 && !(druidCD == 0))
+                                        {
+                                            option = 0;
+                                            Console.WriteLine($"Queden {druidCD} torns per poder utilitzar la habilitat");
+                                        }
+                                    } while (Metodes.InRange(option, minAction, maxAction) && tries < maxtries);
+                                    if (tries == maxtries)
+                                    {
+                                        option = 0;
+                                    }
+                                    switch (option)
+                                    {
+                                        case 0:
+                                            Console.WriteLine($"El druida perd el seu torn");
+                                            break;
+                                        case 1:
+                                            monsterHealth -= Metodes.Damage(druidDmg, monsterProtect);
+                                            break;
+                                        case 2:
+                                            druidShield = true;
+                                            break;
+                                        case 3:
+                                            druidCD = 5;
+                                            break;
+                                    }
                                     break;
                             }
+                            
 
                             
                         }
                         
+                        if (archerCD > 3)
+                        {
+                            Console.WriteLine(MsgMonsterNoAttack);
+                        }
+                        else
+                        {
+                            double[] orderPreHp= Metodes.OrderHp(archerHealth, barbarianHealth, wizardHealth, druidHealth);
+                            for (int i = 0; i < orderPreHp.Length; i++)
+                            {
+                                if (orderPreHp[i] == archerHealth)
+                                {
+                                    archerHealth-=Metodes.MonsterAttack(monsterDmg, archerProtect, archerShield);
+                                }
+                                if (orderPreHp[i] == barbarianHealth)
+                                {
+                                    barbarianHealth -= Metodes.MonsterAttack(monsterDmg, barbarianProtect, barbarianShield);
+                                }
+                                if (orderPreHp[i] == wizardHealth)
+                                {
+                                    wizardHealth -= Metodes.MonsterAttack(monsterDmg, wizardProtect, wizardShield);
+                                }
+                                if (orderPreHp[i] == druidHealth)
+                                {
+                                    druidHealth -= Metodes.MonsterAttack(monsterDmg, druidProtect, druidShield);
+                                }
+                                
+                            }
+                        }
 
+                        double[] orderHp = Metodes.OrderHp(archerHealth, barbarianHealth, wizardHealth, druidHealth);
+                        for(int i = 0; i < orderHp.Length; i++)
+                        {
+                            if (orderHp[i] == archerHealth)
+                            {
+                                Console.WriteLine($"La vida restant de l'arquera és {archerHealth}");
+                            }
+                            else if (orderHp[i] == barbarianHealth)
+                            {
+                                Console.WriteLine($"La vida restant del bàrbar és {barbarianHealth}");
+                            }
+                            else if (orderHp[i] == wizardHealth)
+                            {
+                                Console.WriteLine($"La vida restant de la maga és {wizardHealth}");
+                            }
+                            else if (orderHp[i] == druidHealth)
+                            {
+                                Console.WriteLine($"La vida restant del druida és {druidHealth}");
+                            }
+                        }
+                        Console.WriteLine($"La vida restant del monstre és {monsterHealth}");
                     }
                     enter = false;
 
                 }
-            } while (tries < maxtries);
-            if (tries < maxtries)
+            } while (tries < maxtries && option!=0);
+            if (tries == maxtries)
             {
                 Console.WriteLine(MsgBye);
             }

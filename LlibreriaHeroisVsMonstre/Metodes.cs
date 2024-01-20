@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 
 namespace LlibreriaHeroisVsMonstre
 {
@@ -17,33 +18,101 @@ namespace LlibreriaHeroisVsMonstre
                 return false;
             }
         }
+
+        public static double CheeckStat(double num, int min, int max)
+        {
+            if (num>max || num < min)
+            {
+                Console.WriteLine($"Has fallat els 3 intents, el valor per aquest camp serà {min}");
+                return min;
+
+            }
+            else
+            {
+                return num;
+            }
+        }
         public static double RandomStats(int min,int max)
         {
             Random rand= new Random();
             return rand.Next(min, max + 1);
         }
-
-        public static double CustomStats(int num,int min, int max)
+         public static int CoolDown(int num)
         {
-            int tries=0;
-            const int maxTries = 3;
-            do
+            if ( num > 0)
             {
-                num = Convert.ToInt32(Console.ReadLine());
-                tries++;
-            } while (InRange(num,min,max)&&tries<maxTries);
-            if(num>max||num<min)
-            {
-                num = min;
-                Console.WriteLine($"Com has superat els 3 intents el valor serà {num}");
+                return num-1;
             }
-            return num;
+            else { return 0; }
         }
 
-        public static double Damage(int dmg, ref int prot)
+        public static double[] OrderHp(double archerHealth,double barbarianHealth, double wizardHealth, double druidHealth)
+        {
+            double[] hpOrder = { archerHealth, barbarianHealth, wizardHealth, druidHealth };
+            for (int i = 0; i < hpOrder.Length - 1; i++)
+            {
+                for (int j = i + 1; j < hpOrder.Length; j++)
+                {
+                    if (hpOrder[j] < hpOrder[i])
+                    {
+                        double aux = hpOrder[j];
+                        hpOrder[j] = hpOrder[i];
+                        hpOrder[i] = aux;
+                    }
+                }
+            }
+            return hpOrder;
+        }
+        public static double Damage(double dmg, double prot)
         {
             const int hundred= 100;
-            return dmg * prot/hundred;
+            return dmg-dmg * prot/hundred;
+        }
+
+        public static bool CriticDmg()
+        {
+            Random rand=new Random();
+            const int luckyNum = 2;
+            const int RandLimit= 11;
+            int newRand= rand.Next(RandLimit);
+            if (newRand == luckyNum)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public static bool Dodge()
+        {
+            Random rand = new Random();
+            const int luckyNum = 7;
+            const int RandLimit = 21;
+            int newRand = rand.Next(RandLimit);
+            if (newRand == luckyNum)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        public static double MonsterAttack(double monsterDmg, double protect, bool shield )
+        {
+
+            if (shield)
+            {
+                return Metodes.Damage(monsterDmg, protect * 2);
+            }
+            else
+            {
+                return Metodes.Damage(monsterDmg, protect);
+            }
         }
     }
 }
