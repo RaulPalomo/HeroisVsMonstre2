@@ -106,7 +106,7 @@ namespace LlibreriaHeroisVsMonstre
         {
 
             if (shield)
-            {
+            {          
                 return Metodes.Damage(monsterDmg, protect * 2);
             }
             else
@@ -114,5 +114,18 @@ namespace LlibreriaHeroisVsMonstre
                 return Metodes.Damage(monsterDmg, protect);
             }
         }
+        public static double Heal(double hp, double limitHp)
+        {
+            if(hp>0)
+            {
+                hp += 500;
+            }
+            if(limitHp<hp)
+            {
+                hp=limitHp;
+            }
+            return hp;
+        }
+
     }
 }
