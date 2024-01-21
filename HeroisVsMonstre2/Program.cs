@@ -11,7 +11,8 @@ namespace RaulProjecteHeroisV2
             //global
             const string MsgWelcome = "Benvingut a HEROIS VS MONSTRE!!!";
             int tries = 0, maxtries = 3;
-            bool archerCreated = false, archerShield=false;
+            //vars i constants de l'arquera
+            bool archerShield=false;
             double archerDmg = 0, archerProtect = 0, archerHPlimit = 0;
             int archerAction, archerCD = 0;
             double archerHealth = 0;
@@ -23,7 +24,7 @@ namespace RaulProjecteHeroisV2
             const string MsgActivaArcher = "* L'arquera noqueja al monstre *";
 
             /*Variables i constants del bàrbar*/
-            bool barbarianCreated = false, barbarianShield=false;
+            bool barbarianShield=false;
             double barbarianDmg = 0, barbarianProtect = 0, barbarianHPlimit = 0;
             int barbarianAction, barbarianCD = 0;
             double barbarianHealth = 0;
@@ -34,7 +35,7 @@ namespace RaulProjecteHeroisV2
             const string MsgActivaBarbarian = "* El bàrbar millora al màxim la seva armadura *";
 
             /*Variables i constants de la maga*/
-            bool wizardCreated = false, wizardShield = false;
+            bool wizardShield = false;
             double wizardDmg = 0, wizardProtect = 0, wizardHPlimit = 0;
             int wizardAction, wizardCD = 0;
             double wizardHealth = 0;
@@ -44,18 +45,18 @@ namespace RaulProjecteHeroisV2
             const string MsgTurnWizard = "-----Torn de la maga-----";
 
             /*Variables i constants del druida*/
-            bool druidCreated = false, druidShield = false;
+            bool druidShield = false;
             double druidDmg = 0, druidProtect = 0, druidHPlimit = 0;
             int druidAction, druidCD = 0;
             double druidHealth = 0;
-            const int DruidMaxHealth = 2500, DruidMinHealth = 2000, DruidMaxDmg = 120, DruidMinDmg = 70, DruidMaxProtect = 40, DruidMinProtect = 25, Heal = 500;
+            const int DruidMaxHealth = 2500, DruidMinHealth = 2000, DruidMaxDmg = 120, DruidMinDmg = 70, DruidMaxProtect = 40, DruidMinProtect = 25;
             /*Missatges druida*/
             const string MsgHealthDruid = "Vida[2000-2500]", MsgDmgDruid = "Atac[70-120]", MsgProtectDruid = "Protecció[25-40]%", MsgDruid = "Introdueix els valors requerits per al druida: ", MsgHabDruid = ": cura 500 de vida a tots els herois";
             const string MsgTurnDruid = "-----Torn del druida-----";
             const string MsgHeal = "* El druida cura 500 de vida a tots els herois *";
 
             /*Variables i constants del monstre*/
-            bool monsterCreated = false;
+
             double monsterDmg = 0, monsterProtect = 0;
             double monsterHealth = 0;
             const int MonsterMaxHealth = 12000, MonsterMinHealth = 9000, MonsterMaxDmg = 400, MonsterMinDmg = 250, MonsterMaxProtect = 30, MonsterMinProtect = 20;
@@ -67,32 +68,29 @@ namespace RaulProjecteHeroisV2
             int difficulty=0;
             const int MaxDiff = 4, MinDiff = 1;
 
+            // msg batalla
             const string MsgAction1 = "1- Atacar", MsgAction2 = "2- Protegir-se", MsgAction3 = "3- Habilitat Especial";
             const string MsgMonsterAttack = "-----El monstre ataca-----";
             const string MsgMonsterNoAttack = "-----El monstre no pot atacar-----";
 
 
-            const string MsgWon = "Els herois han derrotat al monstre, has guanyat!!!";
-            const string MsgLose = "Tots els herois han mort, has perdut :(";
+            const string MsgWon = "Els herois han derrotat al monstre, has guanyat!!!", MsgLose = "Tots els herois han mort, has perdut :(";
 
-            const string MsgCoolDown = "Has d'esperar per utilitzar la habilitat";
+
 
             const string MsgArcherProtect = "L'arquera duplica la seva protecció";
             const string MsgBarbarianProtect = "El bàrbar duplica la seva protecció";
             const string MsgWizardProtect = "La maga duplica la seva protecció";
             const string MsgDruidProtect = "El druida duplica la seva protecció";
 
-            const string MsgArcherDie = "L'arquera ha mort";
-            const string MsgBarbarianDie = "El bàrbar ha mort";
-            const string MsgWizardDie = "La maga ha mort";
-            const string MsgDruidDie = "El druida ha mort";
-
             bool enter = false;
-            const string MsgEntry = "1. Iniciar una nova batalla\t0. Sortir";
-            const string MsgBye = "T'has equivocat masses cops, adéu";
+            const string MsgEntry = "1. Iniciar una nova batalla\t0. Sortir", MsgBye = "T'has equivocat masses cops, adéu";
             const int play = 1, exit = 0, maxAction=3, minAction=1;
             
             int option=0;
+            string archerName, barbarianName, wizardName, druidName, names;
+            
+            const string MsgNames = "Escriu el nom de cada heroi: [Arquera, Bàrbar, Maga, Druida]";
 
             Random rand = new Random();
             
@@ -246,7 +244,7 @@ namespace RaulProjecteHeroisV2
 
                             barbarianProtect = Metodes.CheeckStat(barbarianProtect, BarbarianMinProtect, BarbarianMaxProtect);
                             tries = 0;
-                            Console.WriteLine(MsgWizard); //creación mago
+                            Console.WriteLine(MsgWizard); //creació maga
                             Console.WriteLine(MsgHealthWizard);
                             do
                             {
@@ -274,7 +272,7 @@ namespace RaulProjecteHeroisV2
 
                             wizardProtect = Metodes.CheeckStat(wizardProtect, WizardMinProtect, WizardMaxProtect);
                             tries = 0;
-                            Console.WriteLine(MsgDruid); //creación druida
+                            Console.WriteLine(MsgDruid); //creació druida
                             Console.WriteLine(MsgHealthDruid);
                             do
                             {
@@ -304,7 +302,7 @@ namespace RaulProjecteHeroisV2
                             tries = 0;
 
 
-                            Console.WriteLine(MsgMonster); // Creación monstruo
+                            Console.WriteLine(MsgMonster); // Creación monstre
                             Console.WriteLine(MsgHealthMonster);
                             do
                             {
@@ -361,6 +359,13 @@ namespace RaulProjecteHeroisV2
 
                     }
                     Console.Clear();
+                    Console.WriteLine(MsgNames);
+                    names=Console.ReadLine();
+                    string[] namesArray = names.Split(", ");
+                    archerName= namesArray[0];
+                    barbarianName= namesArray[1];
+                    wizardName= namesArray[2];
+                    druidName= namesArray[3];   
                     while ((archerHealth > 0 || barbarianHealth > 0 || wizardHealth > 0 || druidHealth > 0) && monsterHealth > 0)
                     {
                         
@@ -405,28 +410,31 @@ namespace RaulProjecteHeroisV2
                                         switch (option)
                                         {
                                             case 0:
-                                                Console.WriteLine($"L'arquera perd el seu torn");
+                                                Console.WriteLine($"L'arquera {archerName} perd el seu torn");
                                                 break;
                                             case 1:
                                                 if (Metodes.Dodge())
                                                 {
-                                                    Console.WriteLine($"L'arquera ha fallat l'atac");
+                                                    Console.WriteLine($"L'arquera {archerName} ha fallat l'atac");
                                                 }
                                                 else
                                                 {
                                                     if (Metodes.CriticDmg())
                                                     {
                                                         monsterHealth -= Metodes.Damage(archerDmg * 2, monsterProtect);
+                                                        Console.WriteLine($"L'arquera {archerName} fa un atac crític de {Metodes.Damage(archerDmg * 2, monsterProtect)} de dany");
+
                                                     }
                                                     else
                                                     {
                                                         monsterHealth -= Metodes.Damage(archerDmg, monsterProtect);
+                                                        Console.WriteLine($"L'arquera {archerName} fa un atac de {Metodes.Damage(archerDmg, monsterProtect)} de dany");
                                                     }
                                                 }
                                                 break;
                                             case 2:
                                                 archerShield = true;
-                                                Console.WriteLine(MsgArcherProtect);
+                                                Console.WriteLine($"L'arquera {archerName} es protegeix");
                                                 break;
                                             case 3:
                                                 archerCD = 5;
@@ -462,27 +470,29 @@ namespace RaulProjecteHeroisV2
                                         switch (option)
                                         {
                                             case 0:
-                                                Console.WriteLine($"El bàrbar perd el seu torn");
+                                                Console.WriteLine($"El bàrbar {barbarianName} perd el seu torn");
                                                 break;
                                             case 1:
                                                 if (Metodes.Dodge())
                                                 {
-                                                    Console.WriteLine($"El bàrbar ha fallat l'atac");
+                                                    Console.WriteLine($"El bàrbar {barbarianName} ha fallat l'atac");
                                                 }
                                                 else
                                                 {
                                                     if (Metodes.CriticDmg())
                                                     {
                                                         monsterHealth -= Metodes.Damage(barbarianDmg * 2, monsterProtect);
+                                                        Console.WriteLine($"El bàrbar {barbarianName} fa un atac crític de {Metodes.Damage(barbarianDmg*2, monsterProtect)} de dany");
                                                     }
                                                     else
                                                     {
                                                         monsterHealth -= Metodes.Damage(barbarianDmg, monsterProtect);
+                                                        Console.WriteLine($"El bàrbar {barbarianName} fa un atac de {Metodes.Damage(barbarianDmg, monsterProtect)} de dany");
                                                     }
                                                 }
                                                 break;
                                             case 2:
-                                                Console.WriteLine(MsgBarbarianProtect);
+                                                Console.WriteLine($"El bàrbar {barbarianName} es protegeix");
                                                 barbarianShield = true;
                                                 break;
                                             case 3:
@@ -517,31 +527,34 @@ namespace RaulProjecteHeroisV2
                                         switch (option)
                                         {
                                             case 0:
-                                                Console.WriteLine($"El mag perd el seu torn");
+                                                Console.WriteLine($"La maga {wizardName} perd el seu torn");
                                                 break;
                                             case 1:
                                                 if (Metodes.Dodge())
                                                 {
-                                                    Console.WriteLine($"El mag ha fallat l'atac");
+                                                    Console.WriteLine($"La maga {wizardName} ha fallat l'atac");
                                                 }
                                                 else
                                                 {
                                                     if (Metodes.CriticDmg())
                                                     {
                                                         monsterHealth -= Metodes.Damage(wizardDmg * 2, monsterProtect);
+                                                        Console.WriteLine($"La maga {wizardName} fa un atac crític de {Metodes.Damage(wizardDmg * 2, monsterProtect)} de dany");
                                                     }
                                                     else
                                                     {
                                                         monsterHealth -= Metodes.Damage(wizardDmg, monsterProtect);
+                                                        Console.WriteLine($"La maga {wizardName} fa un atac de {Metodes.Damage(wizardDmg, monsterProtect)} de dany");
                                                     }
                                                 }
                                                 break;
                                             case 2:
                                                 wizardShield = true;
-                                                Console.WriteLine(MsgWizardProtect);
+                                                Console.WriteLine($"La maga {wizardName} es protegeix");
                                                 break;
                                             case 3:
                                                 monsterHealth -= Metodes.Damage(wizardDmg * 3, monsterProtect);
+                                                Console.WriteLine($"La maga {wizardName} ataca amb la bola de foc i fa {Metodes.Damage(wizardDmg * 3, monsterProtect)} de dany");
                                                 wizardCD = 5;
                                                 break;
                                         }
@@ -573,30 +586,33 @@ namespace RaulProjecteHeroisV2
                                         switch (option)
                                         {
                                             case 0:
-                                                Console.WriteLine($"El druida perd el seu torn");
+                                                Console.WriteLine($"El druida {druidName} perd el seu torn");
                                                 break;
                                             case 1:
                                                 if (Metodes.Dodge())
                                                 {
-                                                    Console.WriteLine($"El druida ha fallat l'atac");
+                                                    Console.WriteLine($"El druida {druidName} ha fallat l'atac");
                                                 }
                                                 else
                                                 {
                                                     if (Metodes.CriticDmg())
                                                     {
                                                         monsterHealth -= Metodes.Damage(druidDmg * 2, monsterProtect);
+                                                        Console.WriteLine($"El druida {druidName} fa un atac crític de {Metodes.Damage(druidDmg * 2, monsterProtect)} de dany");
                                                     }
                                                     else
                                                     {
                                                         monsterHealth -= Metodes.Damage(druidDmg, monsterProtect);
+                                                        Console.WriteLine($"El druida {druidName} fa un atac de {Metodes.Damage(druidDmg, monsterProtect)} de dany");
                                                     }
                                                 }
                                                 break;
                                             case 2:
-                                                Console.WriteLine(MsgDruidProtect);
+                                                Console.WriteLine($"El druida {druidName} es protegeix");
                                                 druidShield = true;
                                                 break;
                                             case 3:
+                                                Console.WriteLine($"El druida {druidName} cura 500 de vida a tothom");
                                                 archerHealth = Metodes.Heal(archerHealth, archerHPlimit);
                                                 barbarianHealth = Metodes.Heal(barbarianHealth, barbarianHPlimit);
                                                 wizardHealth = Metodes.Heal(wizardHealth, wizardHPlimit);
@@ -641,7 +657,7 @@ namespace RaulProjecteHeroisV2
                             if (wizardHealth > 0)
                             {
                                 wizardHealth -= Metodes.MonsterAttack(monsterDmg, wizardProtect, wizardShield);
-                                Console.WriteLine(wizardHealth <= 0 ? $"El mag ha mort" : $"El mag reb {Metodes.MonsterAttack(monsterDmg, wizardProtect, wizardShield)} de dany");
+                                Console.WriteLine(wizardHealth <= 0 ? $"La maga ha mort" : $"La maga reb {Metodes.MonsterAttack(monsterDmg, wizardProtect, wizardShield)} de dany");
                             }
                             if (druidHealth > 0)
                             {
@@ -682,6 +698,15 @@ namespace RaulProjecteHeroisV2
             {
                 Console.WriteLine(MsgBye);
             }
+            if(monsterHealth<=0)
+            {
+                Console.WriteLine(MsgWon);
+            }
+            else
+            {
+                Console.WriteLine(MsgLose);
+            }
+            Console.ReadKey();
         }
         
     }
