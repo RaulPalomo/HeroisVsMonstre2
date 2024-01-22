@@ -13,8 +13,7 @@
          return false;
      }
  }
-Comprova si el valor es troba fora del rang
-Classes d'equivalència
+
 ~~~
 Comprova si el valor es troba fora del rang
 
@@ -24,10 +23,11 @@ Classes d'equivalència
 * Vàlida: enters majors al mínim
 * Vàlida: enters dins del rang
 * Invàlida: strings o caràcters
-  
+
 Valors límit
 * Límit inferior: el mínim que es marqui(qualsevol enter)
 * Límit superior: el màxim que es vulgui(qualsevol enter)
+
 
 ### Metode CheckStat
 ~~~
@@ -44,10 +44,9 @@ Valors límit
         return num;
     }
 }
-Comprova si el valor es troba fora del rang
-Classes d'equivalència
+
 ~~~
-Comprova si el valor es troba fora del rang
+Comprova si el valor es troba fora del rang, si ho està, fa que el número sigui el mínim possible
 
 
 Classes d'equivalència
@@ -59,3 +58,7 @@ Classes d'equivalència
 Valors límit
 * Límit inferior: el mínim que es marqui(qualsevol enter)
 * Límit superior: el màxim que es vulgui(qualsevol enter)
+
+Resultats
+* Si num=500, min=200 i max=400 --> retorna min
+* Si num=1000, min=800, max=1200 --> retorna num
