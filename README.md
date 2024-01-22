@@ -20,3 +20,8 @@ Comprova si el valor es troba fora del rang
 
 
 Classes d'equivalència
+* Vàlida: enters menors al mínim
+* Vàlida: enters majors al mínim
+* Vàlida: enters dins del rang
+* Invàlida: strings o caràcters
+  
