@@ -17,4 +17,5 @@ Comprova si el valor es troba fora del rang
 Classes d'equivalència
 ~~~
 Comprova si el valor es troba fora del rang
+--
 Classes d'equivalència
