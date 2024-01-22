@@ -115,6 +115,30 @@ Valors límit
 Resultats
 * Si min=20 i max=300 --> retorna número més petit o igual a 300 i més gran o igual a 20
 
+### Mètode Damage
+~~~
+public static double Damage(double dmg, double prot)
+{
+    const int hundred= 100;
+    return dmg-dmg * prot/hundred;
+}
+
+~~~
+Retorna el dany tenint en compte la protecció de l'objectiu
+
+
+Classes d'equivalència
+* Vàlida: dany i protecció positius
+* Vàlida: dany o protecció iguals a 0 
+  
+Valors límit
+* Límit inferior: 1
+* Límit superior: qualsevol número positiu
+
+Resultats
+* Si protecció=20 i dany=100 --> retorna 80
+* Si protecció=0 i dany=200 --> retorna 200
+
 ### Mètode Monster Attack
 ~~~
 public static double MonsterAttack(double monsterDmg, double protect, bool shield )
