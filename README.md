@@ -25,3 +25,6 @@ Classes d'equivalència
 * Vàlida: enters dins del rang
 * Invàlida: strings o caràcters
   
+Valors límit
+* Límit inferior: el mínim que es marqui(qualsevol enter)
+* Límit superior: el màxim que es vulgui(qualsevol enter)
