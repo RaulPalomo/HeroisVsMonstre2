@@ -20,7 +20,7 @@ Comprova si el valor es troba fora del rang
 
 Classes d'equivalència
 * Vàlida: enters menors al mínim
-* Vàlida: enters majors al mínim
+* Vàlida: enters majors al màxim
 * Vàlida: enters dins del rang
 * Invàlida: strings o caràcters
 
@@ -169,4 +169,36 @@ Valors límit
 Resultats
 * Si escud=fals, protecció=25 i dany=100 --> retorna 75
 * Si escud=true, protecció=40 i dany=0 --> retorna 0
+
+### Mètode Heal
+~~~
+public static double Heal(double hp, double limitHp)
+{
+    if(hp>0)
+    {
+        hp += 500;
+    }
+    if(limitHp<hp)
+    {
+        hp=limitHp;
+    }
+    return hp;
+}
+
+~~~
+Aquest mètode suma 500 de vida al heroi (ha d'estar viu), però, si aquesta sobrepassa el límit de vida(la del inici) es quedarrà amb la vida límit
+
+
+Classes d'equivalència
+* Vàlida: vida i vida límit igual a número major a 0
+* Vàlida: vida igual a número menor a 0
+* Invàlida: vida superior al límit de vida
+  
+Valors límit
+* Límit inferior: 1
+* Límit superior: qualsevol número positiu
+
+Resultats
+* Si vida=100 i límitVida=700 --> retorna 600
+* Si vida=0 i límitVida=200 --> retorna 0
 
