@@ -107,13 +107,15 @@ Comprova si el temps d'espera de les habilitats es major a 0, si ho és, els hi 
 
 Classes d'equivalència
 * Vàlida: qualsevol enter
+* Vàlida: 0 o negatius
   
 Valors límit
 * Límit inferior: 0
 * Límit superior: el temps d'espera només arriba a 5 pero podría entrar qualsevol enter més gran
 
 Resultats
-* Si min=20 i max=300 --> retorna número més petit o igual a 300 i més gran o igual a 20
+* Si num=20 --> retorna 19
+* Si num=0 --> retorna 0
 
 ### Mètode Damage
 ~~~
