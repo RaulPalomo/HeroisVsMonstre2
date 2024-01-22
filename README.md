@@ -90,7 +90,7 @@ Valors límit
 Resultats
 * Si min=20 i max=300 --> retorna número més petit o igual a 300 i més gran o igual a 20
 
-### Metode CoolDown
+### Mètode CoolDown
 ~~~
 public static int CoolDown(int num)
 {
@@ -114,4 +114,35 @@ Valors límit
 
 Resultats
 * Si min=20 i max=300 --> retorna número més petit o igual a 300 i més gran o igual a 20
+
+### Mètode Monster Attack
+~~~
+public static double MonsterAttack(double monsterDmg, double protect, bool shield )
+{
+
+    if (shield)
+    {          
+        return Metodes.Damage(monsterDmg, protect * 2);
+    }
+    else
+    {
+        return Metodes.Damage(monsterDmg, protect);
+    }
+}
+
+~~~
+Depenent de si el heroi es protegeix o no invoca al mètode Damage amb la protecció duplicada o no
+
+
+Classes d'equivalència
+* Vàlida: dany i protecció positius, escud cert o fals
+* Vàlida: dany o protecció iguals a 0 
+  
+Valors límit
+* Límit inferior: 1
+* Límit superior: qualsevol número positiu
+
+Resultats
+* Si escud=fals, protecció=25 i dany=100 --> retorna 75
+* Si escud=true, protecció=40 i dany=0 --> retorna 0
 
