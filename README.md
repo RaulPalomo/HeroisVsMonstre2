@@ -131,7 +131,8 @@ Retorna el dany tenint en compte la protecció de l'objectiu
 
 Classes d'equivalència
 * Vàlida: dany i protecció positius
-* Vàlida: dany o protecció iguals a 0 
+* Vàlida: dany o protecció iguals a 0
+* Invàlida: números negatius
   
 Valors límit
 * Límit inferior: 1
