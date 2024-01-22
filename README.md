@@ -28,6 +28,9 @@ Valors límit
 * Límit inferior: el mínim que es marqui(qualsevol enter)
 * Límit superior: el màxim que es vulgui(qualsevol enter)
 
+Resultats
+* Si num=500, min=200 i max=400 --> retorna true
+* Si num=1000, min=800, max=1200 --> retorna false
 
 ### Metode CheckStat
 ~~~
@@ -62,3 +65,28 @@ Valors límit
 Resultats
 * Si num=500, min=200 i max=400 --> retorna min
 * Si num=1000, min=800, max=1200 --> retorna num
+
+### Metode RandomStat
+~~~
+public static double RandomStats(int min,int max)
+{
+    Random rand= new Random();
+    return rand.Next(min, max + 1);
+}
+
+~~~
+Retorna un número aleatori entre un mínim i un màxim
+
+
+Classes d'equivalència
+* Vàlida: el mínim i el màxim són enters i el màxim no es més petit que el mínim
+* Vàlida: el mínim i el màxim són iguals
+* Invàlida: el màxim és més petit que el mínim
+  
+Valors límit
+* Límit inferior: el mínim que es marqui(qualsevol enter)
+* Límit superior: el màxim que es vulgui(qualsevol enter)
+
+Resultats
+* Si min=20 i max=300 --> retorna número més petit o igual a 300 i més gran o igual a 20
+
