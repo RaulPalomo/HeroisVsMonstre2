@@ -1,5 +1,5 @@
 # HeroisVsMonstre2
-### Metode InRange 
+### Mètode InRange 
 ~~~
  public static bool InRange(double num,int min, int max)//comproba que no estigui dins del rang
  {
@@ -32,7 +32,7 @@ Resultats
 * Si num=500, min=200 i max=400 --> retorna true
 * Si num=1000, min=800, max=1200 --> retorna false
 
-### Metode CheckStat
+### Mètode CheckStat
 ~~~
  public static double CheeckStat(double num, int min, int max)
 {
@@ -66,7 +66,7 @@ Resultats
 * Si num=500, min=200 i max=400 --> retorna min
 * Si num=1000, min=800, max=1200 --> retorna num
 
-### Metode RandomStat
+### Mètode RandomStat
 ~~~
 public static double RandomStats(int min,int max)
 {
