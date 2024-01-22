@@ -110,7 +110,7 @@ Classes d'equivalència
 * Vàlida: 0 o negatius
   
 Valors límit
-* Límit inferior: 0
+* Límit inferior: - infinit
 * Límit superior: el temps d'espera només arriba a 5 pero podría entrar qualsevol enter més gran
 
 Resultats
