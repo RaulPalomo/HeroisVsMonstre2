@@ -1,5 +1,5 @@
 # HeroisVsMonstre2
-###Metode InRange 
+### Metode InRange 
 ~~~
  public static bool InRange(double num,int min, int max)//comproba que no estigui dins del rang
  {
@@ -17,5 +17,6 @@ Comprova si el valor es troba fora del rang
 Classes d'equivalència
 ~~~
 Comprova si el valor es troba fora del rang
---
+
+
 Classes d'equivalència
