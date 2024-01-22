@@ -16,52 +16,52 @@ namespace RaulProjecteHeroisV2
             double archerDmg = 0, archerProtect = 0, archerHPlimit = 0;
             int archerAction, archerCD = 0;
             double archerHealth = 0;
-            const int ArcherMaxHealth = 2000, ArcherMinHealth = 1500, ArcherMaxDmg = 300, ArcherMinDmg = 180, ArcherMaxProtect = 40, ArcherMinProtect = 25;
+            const int ArcherMaxHealth = 2000, ArcherMinHealth = 1500, ArcherMaxDmg = 300, ArcherMinDmg = 200, ArcherMaxProtect = 35, ArcherMinProtect = 25;
 
             /*Missatges arquera*/
-            const string MsgHealthArcher = "Vida[1500-2000]", MsgDmgArcher = "Atac[180-300]", MsgProtectArcher = "Protecció[25-40]%", MsgArcher = "Introdueix els valors requerits per a l'Arquera: ", MsgHabArcher = ": fa que el monstre no pugui atacar durant 2 torns";
+            const string MsgHealthArcher = "Vida[1500-2000]", MsgDmgArcher = "Atac[200-300]", MsgProtectArcher = "Protecció[25-35]%", MsgArcher = "Introdueix els valors requerits per a l'Arquera: ", MsgHabArcher = ": fa que el monstre no pugui atacar durant 2 torns";
             const string MsgTurnArcher = "-----Torn de l'arquera-----";
-            const string MsgActivaArcher = "* L'arquera noqueja al monstre *";
+            
 
             /*Variables i constants del bàrbar*/
             bool barbarianShield=false;
             double barbarianDmg = 0, barbarianProtect = 0, barbarianHPlimit = 0;
-            int barbarianAction, barbarianCD = 0;
+            int barbarianCD = 0;
             double barbarianHealth = 0;
             const int BarbarianMaxHealth = 3750, BarbarianMinHealth = 3000, BarbarianMaxDmg = 250, BarbarianMinDmg = 150, BarbarianMaxProtect = 45, BarbarianMinProtect = 35;
             /*Missatges bàrbar*/
             const string MsgHealthBarbarian = "Vida[3000-3750]", MsgDmgBarbarian = "Atac[150-250]", MsgProtectBarbarian = "Protecció[35-45]%", MsgBarbarian = "Introdueix els valors requerits per al bàrbar: ", MsgHabBarbarian = ": augmenta la seva defensa al 100% durant 3 torns";
             const string MsgTurnBarbarian = "-----Torn del bàrbar-----";
-            const string MsgActivaBarbarian = "* El bàrbar millora al màxim la seva armadura *";
+            
 
             /*Variables i constants de la maga*/
             bool wizardShield = false;
             double wizardDmg = 0, wizardProtect = 0, wizardHPlimit = 0;
             int wizardAction, wizardCD = 0;
             double wizardHealth = 0;
-            const int WizardMaxHealth = 1500, WizardMinHealth = 1000, WizardMaxDmg = 350, WizardMinDmg = 300, WizardMaxProtect = 35, WizardMinProtect = 20;
+            const int WizardMaxHealth = 1500, WizardMinHealth = 1100, WizardMaxDmg = 400, WizardMinDmg = 300, WizardMaxProtect = 35, WizardMinProtect = 20;
             /*Missatges de la maga*/
-            const string MsgHealthWizard = "Vida[1000-1500]", MsgDmgWizard = "Atac[300-350]", MsgProtectWizard = "Protecció[20-35]%", MsgWizard = "Introdueix els valors requerits per la maga: ", MsgHabWizard = ": dispara una bola de foc que fa 3 cops el seu atac.";
+            const string MsgHealthWizard = "Vida[1100-1500]", MsgDmgWizard = "Atac[300-400]", MsgProtectWizard = "Protecció[20-35]%", MsgWizard = "Introdueix els valors requerits per la maga: ", MsgHabWizard = ": dispara una bola de foc que fa 3 cops el seu atac.";
             const string MsgTurnWizard = "-----Torn de la maga-----";
 
             /*Variables i constants del druida*/
             bool druidShield = false;
             double druidDmg = 0, druidProtect = 0, druidHPlimit = 0;
-            int druidAction, druidCD = 0;
+            int druidCD = 0;
             double druidHealth = 0;
             const int DruidMaxHealth = 2500, DruidMinHealth = 2000, DruidMaxDmg = 120, DruidMinDmg = 70, DruidMaxProtect = 40, DruidMinProtect = 25;
             /*Missatges druida*/
             const string MsgHealthDruid = "Vida[2000-2500]", MsgDmgDruid = "Atac[70-120]", MsgProtectDruid = "Protecció[25-40]%", MsgDruid = "Introdueix els valors requerits per al druida: ", MsgHabDruid = ": cura 500 de vida a tots els herois";
             const string MsgTurnDruid = "-----Torn del druida-----";
-            const string MsgHeal = "* El druida cura 500 de vida a tots els herois *";
+            
 
             /*Variables i constants del monstre*/
 
             double monsterDmg = 0, monsterProtect = 0;
             double monsterHealth = 0;
-            const int MonsterMaxHealth = 12000, MonsterMinHealth = 9000, MonsterMaxDmg = 400, MonsterMinDmg = 250, MonsterMaxProtect = 30, MonsterMinProtect = 20;
+            const int MonsterMaxHealth = 10000, MonsterMinHealth = 7000, MonsterMaxDmg = 400, MonsterMinDmg = 300, MonsterMaxProtect = 30, MonsterMinProtect = 20;
             /*Missatges monstre*/
-            const string MsgHealthMonster = "Vida[9000-12000]", MsgDmgMonster = "Atac[250-400]", MsgProtectMonster = "Protecció[20-30]%", MsgMonster = "Introdueix els valors requerits per al monstre: ";
+            const string MsgHealthMonster = "Vida[7000-10000]", MsgDmgMonster = "Atac[300-400]", MsgProtectMonster = "Protecció[20-30]%", MsgMonster = "Introdueix els valors requerits per al monstre: ";
             //missatges de la dificultad i vars
             const string MsgDifficulty = "Escull quina dificultad vols:";
             string[] dif = { "1. Fàcil", "2. Difícil", "3. Personalitzada", "4. Random" };
@@ -72,17 +72,7 @@ namespace RaulProjecteHeroisV2
             const string MsgAction1 = "1- Atacar", MsgAction2 = "2- Protegir-se", MsgAction3 = "3- Habilitat Especial";
             const string MsgMonsterAttack = "-----El monstre ataca-----";
             const string MsgMonsterNoAttack = "-----El monstre no pot atacar-----";
-
-
             const string MsgWon = "Els herois han derrotat al monstre, has guanyat!!!", MsgLose = "Tots els herois han mort, has perdut :(";
-
-
-
-            const string MsgArcherProtect = "L'arquera duplica la seva protecció";
-            const string MsgBarbarianProtect = "El bàrbar duplica la seva protecció";
-            const string MsgWizardProtect = "La maga duplica la seva protecció";
-            const string MsgDruidProtect = "El druida duplica la seva protecció";
-
             bool enter = false;
             const string MsgEntry = "1. Iniciar una nova batalla\t0. Sortir", MsgBye = "T'has equivocat masses cops, adéu";
             const int play = 1, exit = 0, maxAction=3, minAction=1;
@@ -698,14 +688,18 @@ namespace RaulProjecteHeroisV2
             {
                 Console.WriteLine(MsgBye);
             }
-            if(monsterHealth<=0)
-            {
-                Console.WriteLine(MsgWon);
-            }
             else
             {
-                Console.WriteLine(MsgLose);
+                if (monsterHealth <= 0 && option !=0)
+                {
+                    Console.WriteLine(MsgWon);
+                }
+                else if(option !=0)
+                {
+                    Console.WriteLine(MsgLose);
+                }
             }
+            
             Console.ReadKey();
         }
         

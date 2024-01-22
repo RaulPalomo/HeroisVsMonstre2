@@ -6,7 +6,7 @@ namespace LlibreriaHeroisVsMonstre
     public class Metodes
     {
 
-        public static bool InRange(double num,int min, int max)
+        public static bool InRange(double num,int min, int max)//comproba que no estigui dins del rang
         {
             if (num < min || num > max)
             {
@@ -37,13 +37,13 @@ namespace LlibreriaHeroisVsMonstre
             Random rand= new Random();
             return rand.Next(min, max + 1);
         }
-         public static int CoolDown(int num)
+        public static int CoolDown(int num)
         {
-            if ( num > 0)
-            {
-                return num-1;
-            }
-            else { return 0; }
+           if ( num > 0)
+           {
+               return num-1;
+           }
+           else { return 0; }
         }
 
         public static double[] OrderHp(double archerHealth,double barbarianHealth, double wizardHealth, double druidHealth)
@@ -83,7 +83,6 @@ namespace LlibreriaHeroisVsMonstre
             {
                 return false;
             }
-
         }
 
         public static bool Dodge()
@@ -100,7 +99,6 @@ namespace LlibreriaHeroisVsMonstre
             {
                 return false;
             }
-
         }
         public static double MonsterAttack(double monsterDmg, double protect, bool shield )
         {

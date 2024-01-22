@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeroisVsMonstre2", "HeroisVsMonstre2\HeroisVsMonstre2.csproj", "{B7A9A2C2-D85A-4B10-8294-736712C8F860}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeroisVsMonstre2", "HeroisVsMonstre2\HeroisVsMonstre2.csproj", "{B7A9A2C2-D85A-4B10-8294-736712C8F860}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LlibreriaHeroisVsMonstre", "LlibreriaHeroisVsMonstre\LlibreriaHeroisVsMonstre.csproj", "{BCB8E3FF-1A7F-44C0-AD00-64BF7D0B72B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LlibreriaHeroisVsMonstre", "LlibreriaHeroisVsMonstre\LlibreriaHeroisVsMonstre.csproj", "{BCB8E3FF-1A7F-44C0-AD00-64BF7D0B72B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHeroisVsMonstre", "TestHeroisVsMonstre\TestHeroisVsMonstre.csproj", "{0717E37A-AFF2-41F6-9DD3-6552D6B9AD26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BCB8E3FF-1A7F-44C0-AD00-64BF7D0B72B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCB8E3FF-1A7F-44C0-AD00-64BF7D0B72B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCB8E3FF-1A7F-44C0-AD00-64BF7D0B72B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0717E37A-AFF2-41F6-9DD3-6552D6B9AD26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0717E37A-AFF2-41F6-9DD3-6552D6B9AD26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0717E37A-AFF2-41F6-9DD3-6552D6B9AD26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0717E37A-AFF2-41F6-9DD3-6552D6B9AD26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
