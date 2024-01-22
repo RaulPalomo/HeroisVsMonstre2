@@ -90,3 +90,28 @@ Valors límit
 Resultats
 * Si min=20 i max=300 --> retorna número més petit o igual a 300 i més gran o igual a 20
 
+### Metode CoolDown
+~~~
+public static int CoolDown(int num)
+{
+   if ( num > 0)
+   {
+       return num-1;
+   }
+   else { return 0; }
+}
+
+~~~
+Comprova si el temps d'espera de les habilitats es major a 0, si ho és, els hi resta 1
+
+
+Classes d'equivalència
+* Vàlida: qualsevol enter
+  
+Valors límit
+* Límit inferior: 0
+* Límit superior: el temps d'espera només arriba a 5 pero podría entrar qualsevol enter més gran
+
+Resultats
+* Si min=20 i max=300 --> retorna número més petit o igual a 300 i més gran o igual a 20
+
