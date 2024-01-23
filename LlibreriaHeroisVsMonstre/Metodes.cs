@@ -72,7 +72,7 @@ namespace LlibreriaHeroisVsMonstre
         public static bool CriticDmg()
         {
             Random rand=new Random();
-            const int luckyNum = 2;
+            const int luckyNum = 7;
             const int RandLimit= 11;
             int newRand= rand.Next(RandLimit);
             if (newRand == luckyNum)
