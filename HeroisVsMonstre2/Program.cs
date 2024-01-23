@@ -636,7 +636,7 @@ namespace RaulProjecteHeroisV2
                             if (druidHealth > Zero)
                             {
                                 druidHealth -= Metodes.MonsterAttack(monsterDmg, druidProtect, druidShield);
-                                Console.WriteLine(druidHealth <= 0 ? $"El druida ha mort" : $"El druida reb {Metodes.MonsterAttack(monsterDmg, druidProtect, druidShield)} de dany");
+                                Console.WriteLine(druidHealth <= Zero ? $"El druida ha mort" : $"El druida reb {Metodes.MonsterAttack(monsterDmg, druidProtect, druidShield)} de dany");
                             }
                         }
                         Console.ReadKey();
@@ -673,7 +673,7 @@ namespace RaulProjecteHeroisV2
                     Console.WriteLine(MsgWon);
                     Console.ReadKey();
                 }
-                else if(option!=0)
+                else if(option!=Zero)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(MsgLose);
